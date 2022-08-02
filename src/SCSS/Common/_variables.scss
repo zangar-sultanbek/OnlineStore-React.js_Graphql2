@@ -1,0 +1,53 @@
+
+$colors : (
+    '--c-black': #1D1F22,
+    '--c-primary': #5ECE7B,
+    '--c-white': #FFFFFF,
+
+    'error': #ff0000
+);
+
+$fonts : (
+    'raleway' : 'Raleway',// sans-serif,
+    'roboto' : 'Roboto',// sans-serif,
+    'roboto condensed' : 'Roboto Condensed',// sans-serif,
+    'source sans pro' : 'Source Sans Pro',// sans-serif
+
+    'error' : 'sans-serif'
+);
+
+$font-sizes : (
+    'main-small' : 14px,
+    'main-medium' : 16px,
+    'main-large' : 18px,
+
+    'secondary' : 24px,
+
+    'header-small' : 30px,
+    'header-medium' : 32px,
+    'header-large' : 42px,
+
+    'error' : 100px
+);
+
+$font-weights : (
+    'thin' : 300,
+    'regular' : 400,
+    'medium' : 500,
+    'semi-bold' : 600,
+    'bold' : 700,
+
+    'error' : 300
+);
+
+$icon-sizes : (
+    'button-small' : 20px,
+    'button-medium' : 24px,
+    'button-large' : 52px,
+
+    'logo' : 41px,
+
+    'error' : 300px
+);
+
+$outlet-margin : 10vh;

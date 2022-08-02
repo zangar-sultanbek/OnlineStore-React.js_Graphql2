@@ -1,0 +1,5 @@
+@use './SCSS/Common/index' as *;
+
+body{
+  background-color: getColor('--c-white');
+}

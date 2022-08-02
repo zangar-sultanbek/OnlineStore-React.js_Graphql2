@@ -1,0 +1,90 @@
+@use '../Common//index' as *;
+
+$contentLength : 90%;
+
+.outlet{
+    #{&}_content{
+        width: $contentLength;
+        margin: $outlet-margin auto;
+    }
+}
+
+.global_header{
+    height: 80px;
+    max-height: 80px;
+    min-height: 80px;
+
+    .navbar{
+        @include flexContainerMixin(row, space-between);
+
+        width: $contentLength;
+        height: inherit;
+        margin: 0 auto;
+
+        &_navigation{
+            @include flexContainerMixin;
+            
+            align-self: flex-end;
+            height: 56px;
+            
+            .category{
+                @include fontMixin('raleway', '--c-black', 'main-medium', 'regular');
+                text-transform: uppercase;
+                padding: 0 16px;
+                height: inherit;
+                cursor: pointer;
+                user-select: none;
+            }
+
+            .category_active{
+                @extend .category;
+                color: getColor('--c-primary');
+                font-weight: getFontWeight('semi-bold');
+                border-bottom: 2px solid getColor('--c-primary');
+            }
+        }
+
+        &_logo{
+            user-select: none;
+            pointer-events: none;
+            img{
+                @include iconPositionMixin;
+            }
+        }
+
+        &_actions{
+            display: grid;
+            grid-template-columns: repeat(3, 40px) min-content;
+            gap: 22px;
+
+            & > *{
+                height: 40px;
+            }
+
+            .cart_btn, .currency_btn{
+                cursor: pointer;
+                @include flexContainerMixin(row, space-evenly, center);
+            }
+
+            .currency_btn{         
+                & > *{
+                    display: inline-block;
+                }
+
+                &_text{
+                    font-weight: getFontWeight('medium');
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1100px){
+    .global_header{
+        .navbar{
+            &_logo{
+                display: none;
+            }
+        }
+    }
+}

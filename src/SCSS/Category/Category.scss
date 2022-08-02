@@ -1,0 +1,11 @@
+@use '../Common/index' as *;
+
+.category_outlet{
+    .header{
+        @include fontMixin('raleway', '--c-black', 'header-large', 'regular');
+    }
+
+    .product_list{
+        margin-top: $outlet-margin;
+    }
+}

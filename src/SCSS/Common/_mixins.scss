@@ -1,0 +1,50 @@
+@use './variables' as *;
+
+@function checkExists($mapName, $keyName){
+    @return map-has-key($map: $mapName, $key: $keyName);
+}
+@function getColor($colorName : 'error'){
+    @return map-get($map: $colors, $key: $colorName);
+}
+@function getFont($fontName : 'error'){
+    @return map-get($map: $fonts, $key: $fontName);
+}
+@function getFontSize($fontSize : 'error'){
+    @return map-get($map: $font-sizes, $key: $fontSize);
+}
+@function getFontWeight($fontWeight : 'error'){
+    @return map-get($map: $font-weights, $key: $fontWeight);
+}
+@function getIconSize($iconSize : 'error'){
+    @return map-get($map: $font-sizes, $key: $iconSize);
+}
+
+//Font mixins
+@mixin fontMixin($fontName, $fontColor, $fontSize, $fontWeight){
+    font-family: getFont($fontName);
+    color: getColor($fontColor);
+    font-size: getFontSize($fontSize);
+    font-weight: getFontWeight($fontWeight);
+}
+
+//Icon mixins
+@mixin iconSizeMixin($iconSize){
+    width: $iconSize;
+    height: $iconSize;
+}
+
+@mixin iconPositionMixin{
+    user-select: none;
+    pointer-events: none;
+
+}
+
+//Container mixins
+@mixin flexContainerMixin($direction: row, $justify: center, $align: center){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+
