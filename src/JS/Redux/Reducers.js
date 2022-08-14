@@ -3,6 +3,8 @@ import {v4} from 'uuid';
 import attributesToStr from "../Methods/Attributes";
 import makeDeepCopy from "../Methods/Copy";
 
+// localStorage.clear();
+
 const initialStoreState = 
 getLocalStorage()
 ?? 

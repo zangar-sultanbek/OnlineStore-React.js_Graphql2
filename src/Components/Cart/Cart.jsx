@@ -43,11 +43,10 @@ const Cart = () => {
         </>
       : 
         <>
-          {/* {hasPurchased
+          {hasPurchased
           ? 
           <CartCheer />
-          : <p className='empty_cart_text'>Oops, seems like your cart is empty.</p>} */}
-          <CartCheer />
+          : <p className='empty_cart_text'>Oops, seems like your cart is empty.</p>}
         </>}
 
   </div>
