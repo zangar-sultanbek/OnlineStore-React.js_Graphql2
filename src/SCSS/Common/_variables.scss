@@ -1,17 +1,19 @@
+$outlet-margin : 5vh;
 
 $colors : (
     '--c-black': #1D1F22,
     '--c-primary': #5ECE7B,
     '--c-white': #FFFFFF,
+    '--c-gray': #8D8F9A,
 
     'error': #ff0000
 );
 
 $fonts : (
-    'raleway' : 'Raleway',// sans-serif,
-    'roboto' : 'Roboto',// sans-serif,
-    'roboto condensed' : 'Roboto Condensed',// sans-serif,
-    'source sans pro' : 'Source Sans Pro',// sans-serif
+    'raleway' : 'Raleway',
+    'roboto' : 'Roboto',
+    'roboto condensed' : 'Roboto Condensed',
+    'source sans pro' : 'Source Sans Pro',
 
     'error' : 'sans-serif'
 );
@@ -50,4 +52,3 @@ $icon-sizes : (
     'error' : 300px
 );
 
-$outlet-margin : 10vh;

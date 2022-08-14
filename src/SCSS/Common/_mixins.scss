@@ -36,7 +36,17 @@
 @mixin iconPositionMixin{
     user-select: none;
     pointer-events: none;
+}
 
+//Image mixins
+@mixin imageMixin($width, $height){
+    width: $width;
+    max-width: $width;
+    
+    height: $height;
+    max-height: $height;
+    min-height: $height;
+    object-fit: contain;
 }
 
 //Container mixins
@@ -45,6 +55,53 @@
     flex-direction: $direction;
     justify-content: $justify;
     align-items: $align;
+}
+
+@mixin flexColumnContainerMixin{
+    @include flexContainerMixin(column, flex-start, flex-start);
+    gap: 8px;
+}
+
+//Button mixins
+@mixin buttonMixin($buttonSize : 26px){
+    border: 1px solid #1D1F22;
+    padding: 4px;
+    height: $buttonSize;
+    // cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+}
+
+@mixin buttonLargeMixin($fontSize: 'main-small'){
+    @include fontMixin('raleway', '--c-white', $fontSize, 'semi-bold');
+    width: 100%;
+    background-color: getColor('--c-primary');
+    padding: 16px 32px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+}
+
+//Scrollbar mixins
+
+@mixin customScrollbarMixin($width : 5px){
+    overflow-y: scroll;
+    overflow-y: overlay;
+
+    &::-webkit-scrollbar{
+        background-color: transparent;
+        width: $width;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: rgba(getColor('--c-gray'), .15);
+        border-radius: 10px;
+        visibility: hidden;
+    }
+    &:hover::-webkit-scrollbar-thumb{
+        visibility: visible;
+    }
 }
 
 

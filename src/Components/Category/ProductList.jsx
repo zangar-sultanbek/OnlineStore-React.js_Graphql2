@@ -1,14 +1,12 @@
-import React from 'react';
+import React from 'react'
+import ProductCard from './ProductCard';
 
-class ProductList extends React.Component{
-
-    render(){
-        return (
+const ProductList = ({products}) => {
+    return (
         <div className='product_list'>
-            <p>123</p>
+            {products.map(product => <ProductCard key={product.id} product={product}/>)}
         </div>
-        )
-    }
+    )
 }
 
-export default ProductList;
+export default React.memo(ProductList);

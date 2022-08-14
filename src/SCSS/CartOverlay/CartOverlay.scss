@@ -1,0 +1,72 @@
+@use '../Common/index' as *;
+
+.cart_overlay{
+    position: fixed;
+    z-index: 5;
+    background-color: rgba(57, 55, 72, 0.22);;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+.cart_content{
+    @include flexContainerMixin(column);
+    gap: 32px;
+    z-index: 8;
+    position: fixed;
+    // border: 1px solid rgb(244, 244, 244);
+    top: 80px;
+    right: 3.25%;
+    background-color: getColor('--c-white');
+    padding: 32px 16px;
+
+    &_header{
+        @include fontMixin('raleway', '--c-black', 'main-medium', 'medium');
+        width: 100%;
+        text-align: left;
+
+        strong{
+            font-weight: getFontWeight('bold');
+        }
+
+    }
+    &_details{
+        @include customScrollbarMixin;
+        @include flexContainerMixin(column, flex-start);
+        gap: 40px;
+        max-height: 420px;
+
+        @include fontMixin('raleway', '--c-black', 'main-medium', 'thin');
+        
+        
+    }
+    &_sum{
+        @include flexContainerMixin(row, space-between);
+        width: 100%;
+
+        strong{
+            @include fontMixin('raleway', '--c-black', 'small-medium', 'bold');
+        }
+    }
+    &_actions{
+        @include flexContainerMixin(row, space-between);
+        gap: 12px;
+        width: 100%;
+        text-transform: uppercase;
+        
+        .open-cart_btn{
+            @include buttonLargeMixin;
+            width: auto;
+            background-color: getColor('--c-white');
+            border: 1px solid #1D1F22;
+            color: getColor('--c-black')
+        }
+        .purchase_btn{
+            @extend .open-cart_btn;
+            color: getColor('--c-white');
+            border-color: getColor('--c-primary');
+            background-color: getColor('--c-primary');
+        }
+    }
+}

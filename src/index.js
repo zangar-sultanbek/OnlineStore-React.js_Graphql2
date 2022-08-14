@@ -4,29 +4,21 @@ import './index.scss';
 import App from './App';
 //GraphQL
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+//Redux
+//Redux
+import store from './JS/Redux/Store';
+import { Provider } from 'react-redux';
 
 const client = new ApolloClient({
-    uri: 'https://flyby-gateway.herokuapp.com/',
+    uri: 'http://localhost:4000',
     cache: new InMemoryCache(),
   });
-
-client.query({
-query: gql`
-    query GetLocations {
-    locations {
-        id
-        name
-        description
-        photo
-    }
-    }
-`,
-})
-.then((result) => console.log(result));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <ApolloProvider client={client}>
+       <Provider store={store}>
         <App />
+       </Provider>
     </ApolloProvider>
 );

@@ -1,0 +1,143 @@
+@use '../Common/index' as *;
+$topPadding: 20px;
+
+.cart_outlet{
+    .header{
+        @include fontMixin('raleway', '--c-black', 'header-medium', 'bold');
+    }
+
+    .cart_items_list{
+        margin-top: $outlet-margin;
+        cursor: default;
+        
+        width: 100%;
+        border-top: 1px solid #E5E5E5;
+
+        .cart_item{
+            padding: $topPadding 0;
+            border-bottom: 1px solid #E5E5E5;
+            &_content{
+                flex: 1;
+
+                max-width: 80%;
+                
+                .item_name{
+                    line-height: 1.23;
+                    &_brand{
+                        @include fontMixin('raleway', '--c-black', 'header-small', 'semi-bold');
+                    }
+                    &_name{
+                        @extend .item_name_brand;
+                        font-weight: getFontWeight('regular');
+                    }
+                    &_price{
+                        strong{
+                            @include fontMixin('raleway', '--c-black', 'secondary', 'bold');
+                        }
+                    }
+                }
+        
+                .item_attributes{
+                    gap: 16px;
+        
+                    .item_attribute{
+                        cursor: default;
+                        &_name{
+                            @include fontMixin('roboto condensed', '--c-black', 'main-large', 'bold');
+                        }
+        
+                        &_items{
+                            .attribute_common, .attribute_common_selected{
+                                min-width: 48px;
+                                height: 35px;
+                            }
+        
+                            .attribute_swatch, .attribute_swatch_selected{
+                                min-width: 27px;
+                                height: 27px;
+                            }
+                        }
+                    }
+                }
+            }
+            &_actions{
+                flex: .05;
+        
+                .cart_item_actions_btn{
+                    width: 35px;
+                    height: 35px;
+                }
+            }
+            &_img{
+
+                flex: .18;
+                width: 200px;
+            }
+        }
+    }
+    
+    .cart_summary_wrapper{
+        @include flexContainerMixin(row, flex-start);
+        width: 15vw;
+        min-width: 280px;
+
+        .cart_summary{
+            @include flexContainerMixin(row, flex-start);
+            flex-wrap: wrap;
+            @include fontMixin('raleway', '--c-black', 'secondary', 'regular');
+            width: 100%;
+            padding-top: $topPadding;
+
+            $gapValue: 4px;
+            gap: $gapValue;
+
+            & > *{
+                white-space: nowrap;
+                width: calc(40% - $gapValue);
+            }
+
+            button{
+                margin-top: 16px;
+                @include buttonLargeMixin;
+            }
+    
+            strong{
+                font-weight: getFontWeight('bold');
+            }
+    
+            p:nth-child(3){
+                font-weight: getFontWeight('medium');
+            }
+        }
+    }
+
+    .empty_cart_text{
+        @include fontMixin('raleway', '--c-black', 'secondary', 'thin');
+        color: rgba(getColor('--c-gray'), .5);
+        cursor: default;
+        padding-top: $topPadding;
+    }
+    .cheer_container{
+        padding-top: $topPadding;
+
+        .cheer_message{
+            @include fontMixin('raleway', '--c-gray', 'secondary', 'regular');
+    
+            a{
+                border-bottom: 2px solid darken(getColor('--c-gray'), 10%);
+            }
+        }
+        .cheer_img{
+            padding-top: $topPadding;
+            width: 100%;
+            max-width: 700px;
+
+            max-height: 466px;
+        }
+        .cheer_hint{
+            font-size: getFontSize('main-small');
+            color: rgba(getColor('--c-gray'), .4);
+            user-select: none;
+        }
+    }
+}

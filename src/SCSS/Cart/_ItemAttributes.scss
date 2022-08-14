@@ -1,0 +1,69 @@
+@use '../Common/index' as *;
+.item_attributes{
+    @include flexColumnContainerMixin;
+
+    .item_attribute{
+        @include flexColumnContainerMixin;
+        @include fontMixin('raleway', '--c-black', 'main-small', 'regular');
+
+
+        &_items{
+            @include flexContainerMixin(row, flex-start, flex-start);
+            gap: 8px;
+            text-transform: uppercase;
+            
+
+            .attribute_common{
+                flex: 1;
+                @include flexContainerMixin;
+                @include fontMixin('source sans pro', '--c-black', 'main-small', 'regular');
+                @include buttonMixin;
+                min-width: 26px;
+                position: relative;
+
+                p{
+                    @include fontMixin('source sans pro', '--c-black', 'main-small', 'regular');
+                    font-size: 100%;
+                }
+            }
+
+            .attribute_common_selected{
+                @extend .attribute_common;
+                background-color: #1D1F22;
+                
+                p{
+                    color: getColor('--c-white');
+                }
+            }
+
+            .attribute_swatch{
+                flex: 1;
+                position: relative;
+                border: none;
+                width: 20px; 
+                height: 20px;
+            }
+
+            $outline-width: 3px;
+            .attribute_swatch_selected{
+                @extend .attribute_swatch;
+                outline: $outline-width solid getColor('--c-primary');
+
+                &:after{
+                    box-sizing: initial;
+                    content: '';
+                    position: absolute;
+                    $border-outline: -1px;
+                    top: $border-outline;
+                    right: $border-outline;
+                    bottom: $border-outline;
+                    left: $border-outline;
+                    border: 1px solid getColor('--c-white');
+                }
+            }
+            & > .attribute_swatch_selected:first-child{
+                margin-left: $outline-width;
+            }
+        }
+    }
+}

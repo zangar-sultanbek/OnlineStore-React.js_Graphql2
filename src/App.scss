@@ -7,4 +7,14 @@ html, *{
   border: none;
   color: getColor('--c-black');
   font-family: getFont('raleway'), sans-serif;
+  background-color: transparent;
+  scroll-behavior: smooth;
+}
+
+// * {
+//   outline: 1px solid #f00 !important;
+// }
+
+a {
+  text-decoration: none;
 }

@@ -1,0 +1,60 @@
+@use '../Common/index' as *;
+.currency_container{
+    cursor: pointer;
+    background-color: getColor('--c-white');
+    @include flexContainerMixin(column);
+    position: relative;
+
+    .currency_value{
+        @include flexContainerMixin(row, space-between);
+
+        &_text{
+            @include fontMixin('raleway', '--c-black', 'main-large', 'medium');
+            padding-right: 10px;
+        }
+        &_img{
+            transition: transform .5s;
+        }
+
+        &_img_selected{
+            @extend .currency_value_img;
+            transform: rotate(180deg);
+        }
+
+    }
+    .currency_select{
+        @include fontMixin('raleway', '--c-black', 'main-large', 'medium');
+        background-color: getColor('--c-white');
+        z-index: 6;
+        box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
+        position: absolute;
+        top: 160%;
+        left: -50%;
+        width: fit-content;
+        padding: 10px 0;
+
+        .currency_option{
+            padding: 12px 25px 12px 20px;
+            
+            &_text{
+                white-space: nowrap;
+            }
+
+            &:hover{
+                background-color: lighten(#EEEEEE, 3.5%);
+            }
+        }
+
+        .currency_option_selected{
+            padding: 12px 25px 12px 20px;
+            
+            &_text{
+                white-space: nowrap;
+            }
+            background-color: #EEEEEE;
+        }
+    }
+    .currency_select_closed{
+        display: none;
+    }
+}

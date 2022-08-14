@@ -3,16 +3,28 @@
 $contentLength : 90%;
 
 .outlet{
+    // min-width: 330px;
+    position: relative;
     #{&}_content{
+        position: relative;
         width: $contentLength;
         margin: $outlet-margin auto;
+        //Fixed navbar code
+        margin: calc($outlet-margin * 3.125) auto calc($outlet-margin * (3.125 / 2)) auto;
     }
 }
 
 .global_header{
+    z-index: 10;
     height: 80px;
     max-height: 80px;
     min-height: 80px;
+    background-color: getColor('--c-white');
+    position: relative;
+    //Fixed navbar code
+    position: fixed;
+    top: 0;
+    width: 100%;
 
     .navbar{
         @include flexContainerMixin(row, space-between);
@@ -20,6 +32,7 @@ $contentLength : 90%;
         width: $contentLength;
         height: inherit;
         margin: 0 auto;
+        position: relative;
 
         &_navigation{
             @include flexContainerMixin;
@@ -45,6 +58,8 @@ $contentLength : 90%;
         }
 
         &_logo{
+            position: absolute;
+            left: 50%;
             user-select: none;
             pointer-events: none;
             img{
@@ -54,7 +69,7 @@ $contentLength : 90%;
 
         &_actions{
             display: grid;
-            grid-template-columns: repeat(3, 40px) min-content;
+            grid-template-columns: repeat(4, 40px) min-content;
             gap: 22px;
 
             & > *{
@@ -62,28 +77,54 @@ $contentLength : 90%;
             }
 
             .cart_btn, .currency_btn{
-                cursor: pointer;
                 @include flexContainerMixin(row, space-evenly, center);
             }
+            .cart_btn{
+                cursor: pointer;
+            }
 
-            .currency_btn{         
-                & > *{
-                    display: inline-block;
+            .cart_btn{
+                position: relative;
+                
+                img{
+                    z-index: 2;
                 }
-
-                &_text{
-                    font-weight: getFontWeight('medium');
+                &_value{
+                    @include fontMixin('roboto', '--c-white', 'main-small', 'bold');
+                    @include flexContainerMixin;
+                    z-index: 1;
+                    position: absolute;
+                    bottom: 20px;
+                    border-radius: 50%;
+                    left: 60%;
+                    width: 20px;
+                    height: 20px;
+                    background-color: getColor('--c-black');
                 }
             }
         }
     }
 }
 
-@media (max-width: 1100px){
+@media (max-width: 700px){
     .global_header{
         .navbar{
             &_logo{
                 display: none;
+            }
+            &_actions{
+                gap: 0;
+                justify-content: end;
+                grid-template-columns: repeat(2, 40px) min-content;
+
+                & > div:first-child, & > div:nth-child(2){
+                    display: none;
+                }
+
+                .cart_btn, .currency_btn{
+                    padding-top: 5px;
+                    @include flexContainerMixin(column, flex-start, flex-start);
+                }
             }
         }
     }

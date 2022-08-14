@@ -1,11 +1,135 @@
 @use '../Common/index' as *;
+$transitionDuration : .3s;
 
 .category_outlet{
     .header{
         @include fontMixin('raleway', '--c-black', 'header-large', 'regular');
+        text-transform: capitalize;
+        cursor: default;
     }
 
     .product_list{
         margin-top: $outlet-margin;
+
+        display: grid;
+        row-gap: 5vh;
+
+        grid-template-columns: repeat(3, 25vw);
+        justify-content: space-between;
+
+        .product_card{
+            padding: 16px;
+            @include flexContainerMixin(column, flex-start, flex-start);
+            cursor: pointer;
+
+            &_img{
+                width: 100%;
+                height: 22vw;
+                display: block;
+                position: relative;
+
+                img{
+                    @include imageMixin(inherit, 100%);
+                }
+                .img_stock{
+                    @include fontMixin('raleway', '--c-gray', 'secondary', 'regular');
+
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100%;
+                    text-align: center;
+                    user-select: none;
+                    text-transform: uppercase;
+                }
+                .product_card_btn{
+                    position: absolute;
+                    right: 0%;
+                    bottom: -26px;
+                    opacity: 0;
+                    transition: opacity $transitionDuration;
+                    cursor: default;
+
+                    img{
+                        display: block;
+                        width: 52px;
+                    }
+
+                    &:focus{
+                        animation: clickAnim .20s ease-in 2 alternate;
+                    }
+                }
+                .product_cart_btn_disabled{
+                    @extend .product_card_btn;
+                    user-select: none;
+                    cursor: pointer;
+                    // pointer-events: none; Prevent any clicks
+
+                    img{
+                        opacity: .5;
+                    }
+                    //Uncomment to add an informative message
+                        // &:after{
+                        //     content: 'This item has attributes';
+                        //     color: getColor('--c-gray');
+                        //     position: absolute;
+                        //     left: 0;       
+                        //     right: 0;       
+                        //     opacity: 0;
+                        //     transition: opacity .5s;
+                        //     white-space: nowrap;
+                        // }
+
+                    &:hover:after{
+                        opacity: 1;
+                    }
+                }
+            }
+            &:hover .product_card_btn{
+                opacity: 1;
+            }
+
+            &_description{
+                margin-top: 24px;
+                line-height: 1.6;
+                .description_name{
+                    @include fontMixin('raleway', '--c-black', 'main-large', 'thin');
+                }
+                .description_price{
+                    @include fontMixin('raleway', '--c-black', 'main-large', 'medium');
+                }
+            }
+
+        }
+        
+        .product_card_hoverable{
+            transition: box-shadow $transitionDuration;
+            &:hover{
+                box-shadow: 0 4px 35px rgba(168, 172, 176, .19);
+            }
+        }
+
+        .product_card_disabled{
+            @extend .product_card;
+            cursor: default;
+            opacity: .5;
+        }
+    }
+}
+
+@media (max-width: 500px){
+    .category_outlet{
+        .product_list{
+            grid-template-columns: repeat(2, 35vw);
+            justify-content: space-evenly;
+        }
+    
+    }
+}
+
+@keyframes clickAnim{
+    to{
+        transform: scale(1.1);
     }
 }
