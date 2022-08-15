@@ -23,7 +23,7 @@ const Product = () => {
     const handleImage = index => (index !== displayedImageIndex) && setDisplayedImageIndex(index);
     const handleCartBtn = () => dispatch({type: TYPES.cart.addItem, payload: {...data.product, selectedAttributes, price, productCount : 1}});
     const handleAttributeChange = useCallback(
-        (attributeName, attributeValue) => {
+            (attributeName, attributeValue) => {
             //check for value inequality to prevent re-renders on click
             const matchedAttributeIndex = selectedAttributes.findIndex(attribute => 
                 attribute.name === attributeName && attribute.value !== attributeValue);

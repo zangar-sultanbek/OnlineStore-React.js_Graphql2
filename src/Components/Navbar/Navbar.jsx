@@ -12,6 +12,7 @@ import { getCategoriesAndCurrencies } from '../../JS/GraphQL/Queries';
 import { TYPES } from '../../JS/Redux/Reducers';
 import routes from '../../JS/Router/routes';
 import useTotalPrice from '../../JS/CustomHooks/useTotalPrice';
+import { useCallback } from 'react';
 
 
 const Navbar = () => {
@@ -25,7 +26,10 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
-    const handleOverlay = () => setIsOverlayOpen(state => !state);
+    const handleOverlay = useCallback(
+        () => setIsOverlayOpen(state => !state),
+        []
+    );
     const handleCategorySwitch = (newCategoryName) => {
         if(selectedCategory !== newCategoryName){
             setSelectedCategory(newCategoryName);
