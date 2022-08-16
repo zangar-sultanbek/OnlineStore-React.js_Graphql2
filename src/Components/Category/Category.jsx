@@ -30,25 +30,24 @@ class Category extends React.Component{
       .catch(error => this.setState(({...this.state, error})));
     }
     componentDidUpdate(){
+      if(!this.state.data){
+        return;
+      }
+
       if(this.state.productCategory.name !== this.props.selectedCategory){
         this.setState(({...this.state, productCategory : this.state.data.categories.find(category => category.name === this.props.selectedCategory)}));
       }
     }
 
-    render(){
-      
+    render(){    
       if(this.state.error){
-        return <p>Unpredicted Error: {this.state.error}</p>
-      }
-
-      if(!this.state.productCategory){
-        return <h3 className='header'>Loading...</h3>
+        return <p>Unpredicted Error: {this.state.error.message}</p>
       }
 
       return (
         <div className='category_outlet'>
-          <h3 className='header'>{this.state.productCategory.name}</h3>
-          {this.state.productCategory && <ProductList products={this.state.productCategory.products}/>}
+            <h3 className='header'>{this.state.productCategory?.name ?? 'Loading...'}</h3>
+            <ProductList products={this.state.productCategory?.products}/>
         </div>
       );
     }

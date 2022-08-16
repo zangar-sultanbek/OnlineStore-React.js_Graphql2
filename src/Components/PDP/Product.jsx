@@ -11,6 +11,7 @@ import { useCallback } from 'react';
 import {TYPES} from '../../JS/Redux/Reducers';
 import client from '../../Client';
 import { getCurrency } from '../../JS/Methods/Currency';
+import LoadingBar from '../LoadingComponents/LoadingBar/LoadingBar';
 
 
 // const Product = () => {
@@ -158,11 +159,9 @@ class Product extends React.Component{
 
     render(){
         if(!this.state.data){
-            return <h1>Loading...</h1>
+            return <LoadingBar />
         }
-
         const price = getCurrency(this.props.currency, this.state.data.product.prices);
-
         return (
             <>
                 <div className="product_images">

@@ -47,6 +47,11 @@ $contentLength : 90%;
                 height: inherit;
                 cursor: pointer;
                 user-select: none;
+                transition: color .3s;
+
+                &:hover{
+                    color: getColor('--c-primary');
+                }
             }
 
             .category_active{
@@ -104,6 +109,14 @@ $contentLength : 90%;
             }
         }
     }
+}
+
+.fetch_error_message{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include fontMixin('roboto', '--c-gray', 'secondary', 'medium');
 }
 
 @media (max-width: 700px){

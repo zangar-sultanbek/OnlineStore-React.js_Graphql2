@@ -89,7 +89,8 @@ class CartItem extends React.Component{
   constructor(props){
     super(props);
 
-    this.state = {
+    this.state = 
+    {
       selectedImageIndex : 
           {
             maxIndex: this.props.gallery.length - 1,

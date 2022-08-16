@@ -67,15 +67,12 @@ class Navbar extends React.Component{
 
     render(){
         if(this.state.error){
-            return <h1>{this.state.error.message} - ADD STYLING</h1>
-        }
-
-        if(!this.state.data){
-            return <h1>LOADING...</h1>;
+            return <h1 className='fetch_error_message'>{
+                this.state.error.message}
+                (Please make sure the GraphQL server is <strong>running</strong> on port <strong>4000</strong>)</h1>
         }
 
         const totalPrice = useTotalPrice(this.props.cart, this.props.currency);
-        
         return (
         <>
             <header className='global_header'>
