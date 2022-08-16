@@ -34,13 +34,17 @@ const CartItem = ({id, uniqueId, name, brand, productCount,  attributes, selecte
   }
   const handleSlider = (action) => {
     if(action === 'increase'){
-      selectedImageIndex.current < selectedImageIndex.maxIndex 
-      ? setSelectedImageIndex(state => ({...state, current: state.current + 1}))
-      : setSelectedImageIndex(state => ({...state, current: state.minIndex}))
+      setSelectedImageIndex(state => {
+        return state.current < state.maxIndex 
+        ? {...state, current : state.current + 1}
+        : {...state, current : state.minIndex}
+      });
     }else{
-      selectedImageIndex.current > selectedImageIndex.minIndex
-      ?  setSelectedImageIndex(state => ({...state, current: state.current - 1}))
-      : setSelectedImageIndex(state => ({...state, current: state.maxIndex}))
+      setSelectedImageIndex(state => {
+        return state.current > state.minIndex
+        ? {...state, current: state.current - 1}
+        : {...state, current: state.maxIndex}
+      });
   }
   }
 

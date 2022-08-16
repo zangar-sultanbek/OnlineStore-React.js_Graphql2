@@ -9,7 +9,7 @@ const Attribute = ({id, name, type, items, selectedAttributes, handleAttributeCh
             return false;
         }
 
-        return item.value === matchedAttribute.value ? true : false;
+        return item.value === matchedAttribute.value;
     }
 
   return (
