@@ -27,10 +27,9 @@ class Navbar extends React.Component{
         this.state = {
             isOverlayOpen : false,
             selectedCategory : this.props.selectedCategory ?? null,
-            data : null
+            data : null,
+            error : null
         }
-
-        this.totalPrice = useTotalPrice(this.props.cart, this.props.currency);
     }
     componentDidMount(){
         client.query({query: getCategoriesAndCurrencies()})
@@ -48,7 +47,8 @@ class Navbar extends React.Component{
                     selectedCategory : prevState.selectedCategory ?? result.data.categories[0].name,
                     data: result.data,
                 }));
-        });
+        })
+        .catch(error => this.setState(prevState => ({...prevState, error})));
     }
 
     handleOverlay = () =>
@@ -66,9 +66,15 @@ class Navbar extends React.Component{
     }
 
     render(){
+        if(this.state.error){
+            return <h1>{this.state.error.message} - ADD STYLING</h1>
+        }
+
         if(!this.state.data){
             return <h1>LOADING...</h1>;
         }
+
+        const totalPrice = useTotalPrice(this.props.cart, this.props.currency);
         
         return (
         <>
@@ -91,7 +97,6 @@ class Navbar extends React.Component{
                             onClick={() => this.handleCategorySwitch(category.name)}
                             className={category.name === this.state.selectedCategory ? 'category_active' : 'category'}>
                                 {category.name}
-                            
                             </Link>)
                         }
                     </div>
@@ -110,18 +115,18 @@ class Navbar extends React.Component{
                         <div className='cart_btn'
                         onClick={this.handleOverlay}>
                             <img src={cartIcon} alt='cart'/>
-                            {Boolean(this.props.cart.length) && <span className='cart_btn_value'>{totalQuantity}</span>}
+                            {Boolean(this.props.cart.length) && <span className='cart_btn_value'>{totalPrice[2]}</span>}
                         </div>
                         {this.state.isOverlayOpen 
                         && 
                         createPortal(
                         <CartOverlay 
-                            cart={this.props.cart} 
-                            currency={this.props.currency} 
-                            handleOverlay={this.handleOverlay}
-                            cartItemsTotalSum={this.totalPrice[0]} 
-                            totalQuantity={this.totalPrice[2]}
-                            />
+                        cart={this.props.cart} 
+                        currency={this.props.currency} 
+                        handleOverlay={this.handleOverlay}
+                        cartItemsTotalSum={totalPrice[0]} 
+                        totalQuantity={totalPrice[2]}
+                        />
                         , document.getElementById('root'))}
                     </div>
                 </div>
