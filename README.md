@@ -18,6 +18,7 @@ GraphQL server must be running on port 4000.
 https://github.com/scandiweb/junior-react-endpoint)
 
 Follow these steps to start the GraphQL server:
+
     1. Switch directory to the GraphQL server folder
     2. Download apollo client by: 
     npm i @apollo/client
