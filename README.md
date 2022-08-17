@@ -14,6 +14,8 @@ A brief description of the Online Shop:
 1. The data is fetched from local GraphQL server running on port 4000.
 Make sure to run the GraphQL server first by using and then launch the actual project. The project is ran on local host 3000 and the 
 GraphQL server must be running on port 4000.
+(In case if graphql server is missing you can download it from here:
+https://github.com/scandiweb/junior-react-endpoint)
 
 2. You're able:
     1. To see the full product list
