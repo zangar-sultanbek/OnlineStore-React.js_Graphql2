@@ -17,6 +17,17 @@ GraphQL server must be running on port 4000.
 (In case if graphql server is missing you can download it from here:
 https://github.com/scandiweb/junior-react-endpoint)
 
+Follow these steps to start the GraphQL server:
+    1. Switch directory to the GraphQL server folder
+    2. Download apollo client by: 
+    npm i @apollo/client
+    3. Run the build(For npm): 
+    npm run build
+    4. Start the server:
+    npm start
+    5. Then switch directory to the folder containing the React project and start it as well:
+    npm start
+
 2. You're able:
     1. To see the full product list
     2. Filter the list based on the category selected
@@ -26,4 +37,3 @@ https://github.com/scandiweb/junior-react-endpoint)
     6. To remove the product from the cart
     7. To 'purchase' the product/products from the cart
     8. And many more
-
