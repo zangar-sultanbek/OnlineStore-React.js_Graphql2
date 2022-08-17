@@ -8,7 +8,6 @@ import Product from './Components/PDP/Product';
 import routes from './JS/Router/routes';
 
 function App() {
-
   return (
       <BrowserRouter>
         <Routes>
