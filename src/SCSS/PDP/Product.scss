@@ -3,6 +3,7 @@
 
 
 
+
 .product_images{
     @include flexContainerMixin(column, flex-start);
     @include customScrollbarMixin;
@@ -14,8 +15,8 @@
     top: 0;
     width: min-content; 
     max-height: 75vh;
-    // animation: slideInYAnim .75s; Causes overflow REMOVE OVERFLOW AND APPLY THIS ANIM instead of opacity
-    animation: opacityAnim 1s .5s backwards;
+    // animation: slideInXNegativeAnim .65s forwards; 
+    animation: opacityAnim1 .75s .5s backwards;
 
     .product_img{
         $width: 80px;
@@ -60,7 +61,7 @@
         gap: 24px;
 
         .product_name{
-            animation: slideInXAnim .75s;
+            animation: textSlideInAnim .75s;
             line-height: 1.23;
             &_brand{
                 @include fontMixin('raleway', '--c-black', 'header-small', 'semi-bold');
@@ -102,12 +103,16 @@
                 @include fontMixin('raleway', '--c-black', 'secondary', 'bold');
             }
         }
-        .product_cart_btn{
+        .product_cart_btn, .product_cart_btn_disabled{
             @include buttonLargeMixin('main-medium');
         }
+        .product_cart_btn{
+            transition: background-color .3s;
+            &:hover{
+                background-color: darken(getColor('--c-primary'), 10%);
+            }
+        }
         .product_cart_btn_disabled{
-            @extend .product_cart_btn;
-
             cursor: default;
             background-color: getColor('--c-gray');
         }
@@ -155,11 +160,22 @@
         transform: translateX(0);
     }
 }
-@keyframes slideInYAnim{
+@keyframes slideInXNegativeAnim{
     0%{
-        transform: translateY(750px);
+        transform: translateX(-750px);
     }
     100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes textSlideInAnim{
+    0%{
+        transform: translateY(-80px);
+        opacity: .1;
+    }
+    100%{
+        opacity: 1;
         transform: translateY(0);
     }
 }

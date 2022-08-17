@@ -4,7 +4,7 @@ $transitionDuration : .3s;
 .category_outlet{
     .header{
         @include fontMixin('raleway', '--c-black', 'header-large', 'regular');
-        animation: opacityAnim .75s;
+        animation: opacityAnim1 1s;
         text-transform: capitalize;
         cursor: default;
     }

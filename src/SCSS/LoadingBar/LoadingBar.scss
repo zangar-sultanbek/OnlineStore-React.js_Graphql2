@@ -5,7 +5,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: opacityAnim 1s;
+    animation: opacityAnim1 1s;
 
     .loading_bar{
         width: 10vw;
@@ -33,7 +33,7 @@
     }
 }
 
-@keyframes opacityAnim{
+@keyframes opacityAnim1{
     from{
         opacity: 0;
     }
@@ -41,6 +41,7 @@
         opacity: 1;
     }
 }
+
 @keyframes rotateAnim{
     to{
         transform: rotate(360deg);

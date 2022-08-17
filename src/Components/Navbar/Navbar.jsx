@@ -59,10 +59,6 @@ class Navbar extends React.Component{
             this.setState(({...this.state, selectedCategory : newCategoryName}));
             this.props.dispatch({type: TYPES.category.setCategory, payload: newCategoryName});
         }
-        
-        // if(window.location.pathname !== routes.home){
-        //     return <Navigate to={routes.home}/>
-        // }
     }
 
     render(){
@@ -79,15 +75,6 @@ class Navbar extends React.Component{
                 <div className="navbar">
                     <div className="navbar_navigation">
                         {this.state.data?.categories.map(category => 
-                            window.location.pathname === routes.home
-                            ?
-                            <p 
-                            key={category.name} 
-                            onClick={() => this.handleCategorySwitch(category.name)}
-                            className={category.name === this.state.selectedCategory ? 'category_active' : 'category'}>
-                                {category.name}
-                            </p>
-                            :
                             <Link
                             to={routes.home}
                             key={category.name} 

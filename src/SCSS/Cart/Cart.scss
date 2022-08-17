@@ -118,26 +118,76 @@ $topPadding: 20px;
         padding-top: $topPadding;
     }
     .cheer_container{
+        width: fit-content;
+        animation: opacityAnim1 .5s;
         padding-top: $topPadding;
 
         .cheer_message{
             @include fontMixin('raleway', '--c-gray', 'secondary', 'regular');
     
+            p{
+                color: getColor('--c-gray');
+                animation: imageAnim 1.5s infinite;
+                display: inline-block;
+            }
+
             a{
                 border-bottom: 2px solid darken(getColor('--c-gray'), 10%);
             }
         }
-        .cheer_img{
-            padding-top: $topPadding;
-            width: 100%;
-            max-width: 700px;
+        .cheer_img_container{
+            position: relative;
+            .cheer_img{
+                border-radius: 5px;
+                margin-top: $topPadding;
+                width: 100%;
+                max-width: 700px;
+                max-height: 466px;
+                z-index: 4;
+            }
+            .cheer_hint{
+                font-size: getFontSize('main-small');
+                color: rgba(getColor('--c-gray'), .4);
+                user-select: none;
+            }
 
-            max-height: 466px;
+            &::after{
+                display: none;
+                opacity: 0;
+                transition: opacity .5s;
+
+                border-radius: 5px;
+                content: 'Well, I just looked up some random image on Google for "thank you" and here it is, the letter! :D';
+                position: absolute;
+                margin-top: $topPadding;
+                width: 100%;
+                max-width: 700px;
+                max-height: 466px;
+                box-sizing: border-box;
+                padding: 0 30px;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                @include flexContainerMixin(column);
+                color: getColor('--c-white');
+                text-align: center;
+                background-color: darken(rgba(162, 162, 162, 0.5), 40%);
+            }
+
+            &:hover:after{
+                opacity: 1;
+            }
+
+            
         }
-        .cheer_hint{
-            font-size: getFontSize('main-small');
-            color: rgba(getColor('--c-gray'), .4);
-            user-select: none;
-        }
+    }
+}
+
+@keyframes imageAnim{
+    from{
+        transform: rotateY(0);
+    }
+    to{
+        transform: rotateY(360deg);
     }
 }

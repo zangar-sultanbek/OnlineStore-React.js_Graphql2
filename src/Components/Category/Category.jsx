@@ -41,7 +41,9 @@ class Category extends React.Component{
 
     render(){    
       if(this.state.error){
-        return <p>Unpredicted Error: {this.state.error.message}</p>
+        return <span>
+          <p style={{color: 'red', display: 'inline-block'}}>Unpredicted Error:</p> 
+          {this.state.error.message}. Are you sure GraphQL <strong>server</strong> is on & running on port <strong>4000</strong>?</span>
       }
 
       return (
