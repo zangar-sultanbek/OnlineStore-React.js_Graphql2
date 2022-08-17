@@ -15,7 +15,6 @@ class CartCheer extends React.Component{
               className='cheer_img'
               src='https://wpblog.zyro.com/cdn-cgi/image/w=700,q=85/wp-content/uploads/2022/01/hand-written-thank-you-note-on-table.jpg' 
               alt='thanks'/>
-              {/* <p className='cheer_hint'>Well, I just looked up some random image on Google for "thank you" and here it is, the letter! :D</p> */}
           </div>
       </div>
     )

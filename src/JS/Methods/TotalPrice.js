@@ -1,4 +1,4 @@
-import { getCurrency } from "../Methods/Currency";
+import { getCurrency } from "./Currency";
 
 const taxPercent = 0.21;
 

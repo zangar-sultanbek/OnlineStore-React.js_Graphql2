@@ -56,23 +56,3 @@ class Category extends React.Component{
 }
 
 export default React.memo(connect(mapStateToProps)(Category));
-
-// const Category = () => {
-//   const {loading, error, data} = useQuery(getAllDataQuery());
-//   const selectedCategory = useSelector(state => state.selectedCategory);
-
-//   const productCategory = useMemo(
-//     () => {
-//       if(!selectedCategory || !data?.categories){
-//         return null;
-//       }
-//       return data.categories.find(category => category.name === selectedCategory);
-//     }, [selectedCategory, data?.categories] 
-//   );
-//   return (
-    // <div className='category_outlet'>
-    //     <h3 className='header'>{productCategory ? productCategory.name : (error ? <p>Unpredicted Error: {error.message}</p> : 'Loading...')}</h3>
-    //     {productCategory && <ProductList products={productCategory.products}/>}
-    // </div>
-//   )
-// }
