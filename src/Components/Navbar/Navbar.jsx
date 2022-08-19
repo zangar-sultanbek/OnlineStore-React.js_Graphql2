@@ -53,59 +53,64 @@ const Navbar = () => {
             dispatch({type: TYPES.currency.setCurrency, payload: {label, symbol}});
         }
     }
+    
+    if(error){
+        return <h1 className='fetch_error_message'>{
+            error.message}
+            (Please make sure the GraphQL server is <strong>running</strong> on port <strong>4000</strong>)</h1>
+    }
 
-  return (
-    <>
-        <header className='global_header'>
-            <div className="navbar">
-                <div className="navbar_navigation">
-                    {data?.categories.map(category => 
-                        <p 
-                        key={category.name} 
-                        onClick={() => handleCategorySwitch(category.name)}
-                        className={category.name === selectedCategory ? 'category_active' : 'category'}>
-                            {category.name}
-                        </p>)
-                    }
-                </div>
+    return (
+        <>
+            <header className='global_header'>
+                <div className="navbar">
+                    <div className="navbar_navigation">
+                        {data?.categories.map(category => 
+                            <p 
+                            key={category.name} 
+                            onClick={() => handleCategorySwitch(category.name)}
+                            className={category.name === selectedCategory ? 'category_active' : 'category'}>
+                                {category.name}
+                            </p>)
+                        }
+                    </div>
 
-                <div className="navbar_logo">
-                    <img src={logoIcon} alt='logo'/>
+                    <div className="navbar_logo">
+                        <img src={logoIcon} alt='logo'/>
+                    </div>
+                    
+                    <div className="navbar_actions">
+                        {/*In Figma's design you have 2 empty boxes inside the header's actions. I've added them too*/}
+                        <div></div> 
+                        <div></div>
+                        <div className='currency_btn'>
+                            <CurrencySwitcher currencies={data?.currencies ?? []} currency={currency}/>
+                        </div>
+                        <div className='cart_btn'
+                        onClick={handleOverlay}>
+                            <img src={cartIcon} alt='cart'/>
+                            {Boolean(cart.length) && <span className='cart_btn_value'>{totalQuantity}</span>}
+                        </div>
+                        {createPortal(
+                        <CartOverlay 
+                            cart={cart} 
+                            currency={currency} 
+                            isOverlayOpen={isOverlayOpen}
+                            handleOverlay={handleOverlay}
+                            cartItemsTotalSum={cartItemsTotalSum} 
+                            totalQuantity={totalQuantity}/>
+                        , document.getElementById('root'))}
+                    </div>
                 </div>
-                
-                <div className="navbar_actions">
-                    {/*In Figma's design you have 2 empty boxes inside the header's actions. I've added them too*/}
-                    <div></div> 
-                    <div></div>
-                    <div className='currency_btn'>
-                        <CurrencySwitcher currencies={data?.currencies ?? []} currency={currency}/>
-                    </div>
-                    <div className='cart_btn'
-                    onClick={handleOverlay}>
-                        <img src={cartIcon} alt='cart'/>
-                        {Boolean(cart.length) && <span className='cart_btn_value'>{totalQuantity}</span>}
-                    </div>
-                    {isOverlayOpen 
-                    && 
-                    createPortal(
-                    <CartOverlay 
-                        cart={cart} 
-                        currency={currency} 
-                        handleOverlay={handleOverlay}
-                        cartItemsTotalSum={cartItemsTotalSum} 
-                        totalQuantity={totalQuantity}/>
-                    , document.getElementById('root'))}
+            </header>
+            
+            <div className="outlet" id='outlet'>
+                <div className="outlet_content">
+                    <Outlet />
                 </div>
             </div>
-        </header>
-        
-        <div className="outlet" id='outlet'>
-            <div className="outlet_content">
-                <Outlet />
-            </div>
-        </div>
-    </>
-  )
-}
+        </>
+    )
+    }
 
 export default React.memo(Navbar);

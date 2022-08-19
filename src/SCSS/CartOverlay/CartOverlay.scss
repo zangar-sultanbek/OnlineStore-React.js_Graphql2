@@ -1,6 +1,7 @@
 @use '../Common/index' as *;
 
 .cart_overlay{
+    animation: opacityAnim1 .3s;
     position: fixed;
     z-index: 5;
     background-color: rgba(57, 55, 72, 0.22);;
@@ -10,7 +11,14 @@
     left: 0;
     overflow: hidden;
 }
+.cart_overlay_closed, .cart_content_closed{
+    // display: none;
+    visibility: hidden;
+    position: absolute;
+}
+
 .cart_content{
+    animation: dropdownAnim .5s;
     @include flexContainerMixin(column);
     gap: 32px;
     z-index: 8;
@@ -34,7 +42,8 @@
     &_details{
         @include customScrollbarMixin;
         @include flexContainerMixin(column, flex-start);
-        gap: 40px;
+        padding: 5px 0;
+        gap: 30px;
         max-height: 420px;
 
         @include fontMixin('raleway', '--c-black', 'main-medium', 'thin');
@@ -68,5 +77,18 @@
             border-color: getColor('--c-primary');
             background-color: getColor('--c-primary');
         }
+    }
+}
+
+@keyframes slideDownAnim{
+    0%{
+        transform: translateX(300px);
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(0);
     }
 }

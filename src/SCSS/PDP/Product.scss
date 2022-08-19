@@ -1,8 +1,6 @@
 @use '../Common/index' as *;
 @use '../Cart/ItemAttributes';
 
-
-
 .product_images{
     @include flexContainerMixin(column, flex-start);
     @include customScrollbarMixin;
@@ -14,6 +12,7 @@
     top: 0;
     width: min-content; 
     max-height: 75vh;
+    animation: opacityAnim1 .75s .3s backwards;
 
     .product_img{
         $width: 80px;
@@ -32,6 +31,7 @@
     }
 }
 .product_content{
+    animation: dropdownAnim .5s;
     z-index: 2;
     margin: 0 auto;
     width: 82.5%;
@@ -58,6 +58,7 @@
         gap: 24px;
 
         .product_name{
+            animation: textSlideInAnim .75s;
             line-height: 1.23;
             &_brand{
                 @include fontMixin('raleway', '--c-black', 'header-small', 'semi-bold');
@@ -69,6 +70,7 @@
         }
         .item_attributes{
             gap: 16px;
+            // animation: opacityAnim 1s .5s backwards;
 
             .item_attribute{
                 cursor: pointer;
@@ -98,12 +100,16 @@
                 @include fontMixin('raleway', '--c-black', 'secondary', 'bold');
             }
         }
-        .product_cart_btn{
+        .product_cart_btn, .product_cart_btn_disabled{
             @include buttonLargeMixin('main-medium');
         }
+        .product_cart_btn{
+            transition: background-color .3s;
+            &:hover{
+                background-color: darken(getColor('--c-primary'), 10%);
+            }
+        }
         .product_cart_btn_disabled{
-            @extend .product_cart_btn;
-
             cursor: default;
             background-color: getColor('--c-gray');
         }
@@ -116,6 +122,7 @@
 @media (max-width: 1000px){
     .product_images{
         width: 60px;
+        max-height: 80vh;
     
         .product_img{
             $width: 100%;
@@ -139,5 +146,33 @@
         &_img{
             width: 100%;
         }
+    }
+}
+
+@keyframes slideInXAnim{
+    0%{
+        transform: translateX(750px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes slideInXNegativeAnim{
+    0%{
+        transform: translateX(-750px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes textSlideInAnim{
+    0%{
+        transform: translateY(-80px);
+        opacity: .1;
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
     }
 }

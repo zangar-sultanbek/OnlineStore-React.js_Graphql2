@@ -11,7 +11,6 @@
             @include flexContainerMixin(row, flex-start, flex-start);
             gap: 8px;
             text-transform: uppercase;
-            
 
             .attribute_common{
                 flex: 1;
@@ -30,6 +29,7 @@
             .attribute_common_selected{
                 @extend .attribute_common;
                 background-color: #1D1F22;
+                transition: background-color .5s;
                 
                 p{
                     color: getColor('--c-white');

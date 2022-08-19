@@ -23,6 +23,7 @@
 
     }
     .currency_select{
+        animation: dropdownAnim .3s;
         @include fontMixin('raleway', '--c-black', 'main-large', 'medium');
         background-color: getColor('--c-white');
         z-index: 6;

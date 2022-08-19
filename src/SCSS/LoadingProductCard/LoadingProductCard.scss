@@ -1,0 +1,30 @@
+@use '../Common/index' as *;
+
+.product_card_loading{
+    padding: 16px;
+    animation: opacityAnim1 .75s infinite alternate;
+
+
+    &_img{
+        border-radius: 7px;
+        background-color: rgb(230, 230, 230);
+        width: 100%;
+        height: 22vw;
+        display: block;
+        position: relative;
+    }
+    &_description{
+        width: 100%;
+        margin-top: 24px;
+
+        .description_name{
+            background-color: rgb(230, 230, 230);
+            height: 20px;
+            border-radius: 4px;
+        }
+        .description_price{
+            @extend .description_name;
+            margin-top: 5px;
+        }
+    }
+}

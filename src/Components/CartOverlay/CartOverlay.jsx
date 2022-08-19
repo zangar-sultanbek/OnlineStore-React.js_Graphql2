@@ -6,14 +6,14 @@ import routes from '../../JS/Router/routes';
 import { TYPES } from '../../JS/Redux/Reducers';
 import CartList from '../Cart/CartList';
 
-const CartOverlay = ({cart, currency, handleOverlay, cartItemsTotalSum, totalQuantity}) => {
+const CartOverlay = ({cart, currency, isOverlayOpen, handleOverlay, cartItemsTotalSum, totalQuantity}) => {
   const dispatch = useDispatch();
   const handlePurchase = () => cart.length && dispatch({type: TYPES.cart.removeAll});
   
   return (
     <>
-      <div className='cart_overlay' />
-      <div className='cart_content'>
+      <div className={isOverlayOpen ? 'cart_overlay' : 'cart_overlay_closed'} />
+      <div className={isOverlayOpen ? 'cart_content' : 'cart_content_closed'}>
         <h3 className='cart_content_header'>
             <strong>My Bag</strong>, {totalQuantity} items
         </h3>

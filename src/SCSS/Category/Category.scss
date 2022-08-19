@@ -4,6 +4,7 @@ $transitionDuration : .3s;
 .category_outlet{
     .header{
         @include fontMixin('raleway', '--c-black', 'header-large', 'regular');
+        animation: opacityAnim1 1s;
         text-transform: capitalize;
         cursor: default;
     }
@@ -97,6 +98,7 @@ $transitionDuration : .3s;
                     @include fontMixin('raleway', '--c-black', 'main-large', 'thin');
                 }
                 .description_price{
+                    animation: opacityAnim1 .5s;
                     @include fontMixin('raleway', '--c-black', 'main-large', 'medium');
                 }
             }

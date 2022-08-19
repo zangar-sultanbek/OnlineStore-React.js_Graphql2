@@ -3,7 +3,7 @@ import CartItem from './CartItem';
 import { useSelector } from 'react-redux';
 import { getCurrency } from '../../JS/Methods/Currency';
 
-const CartList = ({isSliderDisplayed = false}) => { //FOR CLASS COMPONENTS USE PROPS DRILLING LIKE: cart, currency, isSliderDisplayed
+const CartList = ({isSliderDisplayed = false}) => {
     const cart = useSelector(state => state.cart);
     const currency = useSelector(state => state.currency);
 

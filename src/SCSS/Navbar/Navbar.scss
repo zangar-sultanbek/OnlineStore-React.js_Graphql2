@@ -47,6 +47,11 @@ $contentLength : 90%;
                 height: inherit;
                 cursor: pointer;
                 user-select: none;
+                transition: color .3s;
+
+                &:hover{
+                    color: getColor('--c-primary');
+                }
             }
 
             .category_active{
@@ -90,6 +95,7 @@ $contentLength : 90%;
                     z-index: 2;
                 }
                 &_value{
+                    animation: opacityAnim1 .4s;
                     @include fontMixin('roboto', '--c-white', 'main-small', 'bold');
                     @include flexContainerMixin;
                     z-index: 1;
@@ -104,6 +110,14 @@ $contentLength : 90%;
             }
         }
     }
+}
+
+.fetch_error_message{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include fontMixin('roboto', '--c-gray', 'secondary', 'medium');
 }
 
 @media (max-width: 700px){

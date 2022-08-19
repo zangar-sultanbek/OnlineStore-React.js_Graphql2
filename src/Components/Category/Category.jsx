@@ -19,10 +19,17 @@ const Category = () => {
       return data.categories.find(category => category.name === selectedCategory);
     }, [selectedCategory, data?.categories] 
   );
+
+  if(error){
+    return <span>
+      <p style={{color: 'red', display: 'inline-block'}}>Unpredicted Error:</p> 
+      {error.message}. Are you sure GraphQL <strong>server</strong> is on & running on port <strong>4000</strong>?</span>
+  }
+  
   return (
     <div className='category_outlet'>
-        <h3 className='header'>{productCategory ? productCategory.name : (error ? <p>Unpredicted Error: {error.message}</p> : 'Loading...')}</h3>
-        {productCategory && <ProductList products={productCategory.products}/>}
+        <h3 className='header'>{productCategory?.name ?? 'Loading...'}</h3>
+        <ProductList products={productCategory?.products}/>
     </div>
   )
 }

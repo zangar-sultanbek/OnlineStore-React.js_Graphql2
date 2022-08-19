@@ -5,7 +5,6 @@ import App from './App';
 //GraphQL
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
 //Redux
-//Redux
 import store from './JS/Redux/Store';
 import { Provider } from 'react-redux';
 

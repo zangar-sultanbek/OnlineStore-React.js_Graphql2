@@ -45,7 +45,7 @@ const CartItem = ({id, uniqueId, name, brand, productCount,  attributes, selecte
         ? {...state, current: state.current - 1}
         : {...state, current: state.maxIndex}
       });
-  }
+    }
   }
 
   return (
@@ -67,12 +67,12 @@ const CartItem = ({id, uniqueId, name, brand, productCount,  attributes, selecte
         <div className="cart_item_actions">
             <button 
             type='button'
-            className='cart_item_actions_btn ' 
+            className='cart_item_actions_btn' 
             onClick={() => handleProductCountChange('increase')}><p>+</p></button>
             <div className='cart_item_count_btn'><p>{productCount}</p></div>
             <button 
             type='button'
-            className='cart_item_actions_btn ' 
+            className='cart_item_actions_btn' 
             onClick={() => handleProductCountChange('decrease')}>{'-'}</button>
         </div>
         <div className="cart_item_img">

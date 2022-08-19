@@ -9,6 +9,7 @@ import useCurrency from '../../JS/CustomHooks/useCurrency';
 import routes from '../../JS/Router/routes';
 import { useCallback } from 'react';
 import {TYPES} from '../../JS/Redux/Reducers';
+import LoadingBar from '../LoadingComponents/LoadingBar/LoadingBar';
 
 
 const Product = () => {
@@ -46,11 +47,8 @@ const Product = () => {
         setSelectedAttributes(data.product.attributes.map(item => ({name : item.name, value : item.items[0].value})));
     }
 
-    if(loading){
-        return <h3>Loading...</h3>;
-    }
-    if(error){
-        return <h3>Error: {error.message}</h3>
+    if(!data){
+        return <LoadingBar />
     }
 
     return (
