@@ -101,12 +101,12 @@ class Navbar extends React.Component{
                             <img src={cartIcon} alt='cart'/>
                             {Boolean(this.props.cart.length) && <span className='cart_btn_value'>{totalPrice[2]}</span>}
                         </div>
-                        {this.state.isOverlayOpen 
-                        && 
-                        createPortal(
+
+                       {createPortal(
                         <CartOverlay 
                         cart={this.props.cart} 
                         currency={this.props.currency} 
+                        isOverlayOpen={this.state.isOverlayOpen}
                         handleOverlay={this.handleOverlay}
                         cartItemsTotalSum={totalPrice[0]} 
                         totalQuantity={totalPrice[2]}

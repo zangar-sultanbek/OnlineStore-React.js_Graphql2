@@ -16,8 +16,8 @@ class CartOverlay extends React.Component{
   render(){
     return (
       <>
-        <div className='cart_overlay' />
-        <div className='cart_content'>
+        <div className={this.props.isOverlayOpen ? 'cart_overlay' : 'cart_overlay_closed'} />
+        <div className={this.props.isOverlayOpen ? 'cart_content' : 'cart_content_closed'}>
           <h3 className='cart_content_header'>
               <strong>My Bag</strong>, {this.props.totalQuantity} items
           </h3>
