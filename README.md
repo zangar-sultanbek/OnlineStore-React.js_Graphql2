@@ -19,7 +19,7 @@ https://github.com/scandiweb/junior-react-endpoint)
 
 Follow these steps to start the GraphQL server:
 
-    1. Switch directory to the GraphQL server folder
+    1. Switch directory to the GraphQL server folder(the folder you unzipped the endpoint)
     2. Download apollo client by: 
     npm i @apollo/client
     3. Run the build(For npm): 
