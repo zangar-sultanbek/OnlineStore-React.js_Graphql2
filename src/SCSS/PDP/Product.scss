@@ -149,23 +149,6 @@
     }
 }
 
-@keyframes slideInXAnim{
-    0%{
-        transform: translateX(750px);
-    }
-    100%{
-        transform: translateX(0);
-    }
-}
-@keyframes slideInXNegativeAnim{
-    0%{
-        transform: translateX(-750px);
-    }
-    100%{
-        transform: translateX(0);
-    }
-}
-
 @keyframes textSlideInAnim{
     0%{
         transform: translateY(-80px);
