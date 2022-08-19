@@ -1,9 +1,6 @@
 @use '../Common/index' as *;
 @use '../Cart/ItemAttributes';
 
-
-
-
 .product_images{
     @include flexContainerMixin(column, flex-start);
     @include customScrollbarMixin;
@@ -15,8 +12,7 @@
     top: 0;
     width: min-content; 
     max-height: 75vh;
-    // animation: slideInXNegativeAnim .65s forwards; 
-    animation: opacityAnim1 .75s .5s backwards;
+    animation: opacityAnim1 .75s .3s backwards;
 
     .product_img{
         $width: 80px;
@@ -35,6 +31,7 @@
     }
 }
 .product_content{
+    animation: dropdownAnim .5s;
     z-index: 2;
     margin: 0 auto;
     width: 82.5%;
@@ -149,23 +146,6 @@
         &_img{
             width: 100%;
         }
-    }
-}
-
-@keyframes slideInXAnim{
-    0%{
-        transform: translateX(750px);
-    }
-    100%{
-        transform: translateX(0);
-    }
-}
-@keyframes slideInXNegativeAnim{
-    0%{
-        transform: translateX(-750px);
-    }
-    100%{
-        transform: translateX(0);
     }
 }
 

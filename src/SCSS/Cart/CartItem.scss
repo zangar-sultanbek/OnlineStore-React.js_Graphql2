@@ -9,7 +9,6 @@ $buttonSize : 26px;
     gap: 4px;
     align-items: stretch;
 
-
     &_content{
         flex: 1;
         max-width: 125px;
@@ -37,7 +36,7 @@ $buttonSize : 26px;
         .cart_item_count_btn{
             @include fontMixin('raleway', '--c-black', 'small-medium', 'medium');
         }
-
+        
         .cart_item_actions_btn{
             @include buttonMixin($buttonSize);
             @include fontMixin('raleway', '--c-black', 'header-small', 'thin');
@@ -45,6 +44,10 @@ $buttonSize : 26px;
             cursor: pointer;
             width: $buttonSize;
             height: $buttonSize;
+
+            &:hover{
+                background-color: darken(getColor('--c-white'), 6%);
+            }
         }
     }
     &_img{

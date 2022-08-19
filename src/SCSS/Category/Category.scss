@@ -98,6 +98,7 @@ $transitionDuration : .3s;
                     @include fontMixin('raleway', '--c-black', 'main-large', 'thin');
                 }
                 .description_price{
+                    animation: opacityAnim1 .5s;
                     @include fontMixin('raleway', '--c-black', 'main-large', 'medium');
                 }
             }

@@ -95,6 +95,7 @@ $contentLength : 90%;
                     z-index: 2;
                 }
                 &_value{
+                    animation: opacityAnim1 .4s;
                     @include fontMixin('roboto', '--c-white', 'main-small', 'bold');
                     @include flexContainerMixin;
                     z-index: 1;
