@@ -1,7 +1,7 @@
 This is an Online Shop project. The following tech stack is used:
 
     1. JavaScript(ES6+)
-    2. React.js(Class components. Soon I'll upload a Functional Component version as a separate repository on GitHub)
+    2. React.js(Class components. There's also a functional component version of this project in repository called: OnlineStore-React.js_Graphql2 
     3. HTML5, CSS3
     4. Scss/Sass + CSS modules
     5. Responsive + Mobile first design
